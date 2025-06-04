@@ -4,46 +4,49 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>시간 계산기</title>
+
+  <!-- ✅ manifest 등록 -->
+  <link rel="manifest" href="manifest.json" />
+
+  <!-- ✅ TailwindCSS -->
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body class="bg-gray-100 p-4 text-sm min-h-screen">
   <h1 class="text-lg font-bold mb-4 whitespace-nowrap">● 시간 계산기 - 문의 : Gangsterz</h1>
 
-    <!-- 결과 Page -->
-    <section class="bg-white p-4 rounded-lg shadow mb-6">
-      <div class="flex items-center justify-between mb-5" style="max-width: 304px;">
-        <h2 class="font-semibold whitespace-nowrap text-base">◉  결과 page</h2>
-        <button id="calculateButton" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">
-          계산하기
-        </button>
-      </div>
+  <!-- 결과 Page -->
+  <section class="bg-white p-4 rounded-lg shadow mb-6">
+    <div class="flex items-center justify-between mb-5" style="max-width: 304px;">
+      <h2 class="font-semibold whitespace-nowrap text-base">◉  결과 page</h2>
+      <button id="calculateButton" class="bg-blue-500 text-white px-3 py-1 rounded text-sm hover:bg-blue-600">
+        계산하기
+      </button>
+    </div>
 
-      <!-- 👇 나의 행군 시간 입력칸 추가 위치 -->
-      <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap mb-2">
-        <label class="w-28 shrink-0 text-blue-600">나의 행군 시간</label>
-        <input id="myMarchTime" type="text" class="border rounded px-2 py-1 w-32 text-blue-600" placeholder="HH:mm:ss" />
-        <button id="resetMyMarchTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
-      </div>
+    <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap mb-2">
+      <label class="w-28 shrink-0 text-blue-600">나의 행군 시간</label>
+      <input id="myMarchTime" type="text" class="border rounded px-2 py-1 w-32 text-blue-600" placeholder="HH:mm:ss" />
+      <button id="resetMyMarchTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">리셋</button>
+    </div>
 
+    <div class="space-y-2">
       <div class="space-y-2">
-        <div class="space-y-2">
-          <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-            <label class="w-28 shrink-0 text-blue-600">공격 도착 시간</label>
-            <input id="attackTime" type="text" class="border rounded px-2 py-1 w-32 text-blue-600" placeholder="HH:mm:ss" />
-            <button id="copyAttackTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
-          </div>
-      <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-        <label class="w-28 shrink-0">수비 파견시간(1)</label>
-        <input id="defenseTime1" type="text" class="border rounded px-2 py-1 w-32 bg-gray-200" placeholder="HH:mm:ss" readonly />
-        <button id="copyDefenseTime1" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
-      </div>
-      <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
-        <label class="w-28 shrink-0">수비 파견시간(2)</label>
-        <input id="defenseTime2" type="text" class="border rounded px-2 py-1 w-32 bg-gray-200" placeholder="HH:mm:ss" readonly />
-        <button id="copyDefenseTime2" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
-      </div>
-      <div class="text-xs text-gray-600 mt-1">
-        ※ (2) 진행 후 50% 가속 사용
+        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+          <label class="w-28 shrink-0 text-blue-600">공격 도착 시간</label>
+          <input id="attackTime" type="text" class="border rounded px-2 py-1 w-32 text-blue-600" placeholder="HH:mm:ss" />
+          <button id="copyAttackTime" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
+        </div>
+        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+          <label class="w-28 shrink-0">수비 파견시간(1)</label>
+          <input id="defenseTime1" type="text" class="border rounded px-2 py-1 w-32 bg-gray-200" placeholder="HH:mm:ss" readonly />
+          <button id="copyDefenseTime1" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
+        </div>
+        <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
+          <label class="w-28 shrink-0">수비 파견시간(2)</label>
+          <input id="defenseTime2" type="text" class="border rounded px-2 py-1 w-32 bg-gray-200" placeholder="HH:mm:ss" readonly />
+          <button id="copyDefenseTime2" class="bg-gray-300 px-2 py-1 rounded shrink-0">복사</button>
+        </div>
+        <div class="text-xs text-gray-600 mt-1">※ (2) 진행 후 50% 가속 사용</div>
       </div>
     </div>
   </section>
@@ -53,11 +56,10 @@
     <div class="flex items-center gap-24 flex-nowrap overflow-x-auto whitespace-nowrap mb-5">
       <h2 class="font-semibold whitespace-nowrap text-base">◉  상대시간 입력 page</h2>
       <label class="inline-flex items-center whitespace-nowrap text-sm">
-        <input id="useEnemyTimeCheckbox" type="checkbox" class="mr-1" />
-        사용
+        <input id="useEnemyTimeCheckbox" type="checkbox" class="mr-1" /> 사용
       </label>
     </div>
-    
+
     <div class="space-y-2">
       <div class="flex items-center gap-2 overflow-x-auto whitespace-nowrap">
         <label class="w-28 shrink-0">UTC 시간</label>
@@ -77,8 +79,7 @@
     </div>
     <div class="mt-2 text-xs text-gray-600">
       <label class="inline-flex items-center whitespace-nowrap">
-        <input id="useUtcCheckbox" type="checkbox" class="mr-1" />
-        UTC 자동 사용 (기입 시점 감안 필요)
+        <input id="useUtcCheckbox" type="checkbox" class="mr-1" /> UTC 자동 사용 (기입 시점 감안 필요)
       </label>
     </div>
   </section>
@@ -88,8 +89,7 @@
     <div class="flex items-center gap-24 flex-nowrap overflow-x-auto whitespace-nowrap mb-5">
       <h2 class="font-semibold whitespace-nowrap text-base">◉  행군시간 입력 page</h2>
       <label class="inline-flex items-center whitespace-nowrap text-sm">
-        <input id="useMyMarchCheckbox" type="checkbox" class="mr-1" />
-        사용
+        <input id="useMyMarchCheckbox" type="checkbox" class="mr-1" /> 사용
       </label>
     </div>
 
@@ -100,38 +100,50 @@
           <input id="enemyId1" type="text" class="border rounded px-2 py-1 w-24" placeholder="아이디" />
           <input id="enemyMarch1" type="text" class="border rounded px-2 py-1 w-36" placeholder="HH:mm:ss" />
           <label class="inline-flex items-center w-20">
-            <input id="enemySelect1" type="checkbox" class="mr-1" />
-            선택
+            <input id="enemySelect1" type="checkbox" class="mr-1" /> 선택
           </label>
         </div>
         <div class="flex items-center gap-2 whitespace-nowrap overflow-x-auto">
           <input id="enemyId2" type="text" class="border rounded px-2 py-1 w-24" placeholder="아이디" />
           <input id="enemyMarch2" type="text" class="border rounded px-2 py-1 w-36" placeholder="HH:mm:ss" />
           <label class="inline-flex items-center w-20">
-            <input id="enemySelect2" type="checkbox" class="mr-1" />
-            선택
+            <input id="enemySelect2" type="checkbox" class="mr-1" /> 선택
           </label>
         </div>
         <div class="flex items-center gap-2 whitespace-nowrap overflow-x-auto">
           <input id="enemyId3" type="text" class="border rounded px-2 py-1 w-24" placeholder="아이디" />
           <input id="enemyMarch3" type="text" class="border rounded px-2 py-1 w-36" placeholder="HH:mm:ss" />
           <label class="inline-flex items-center w-20">
-            <input id="enemySelect3" type="checkbox" class="mr-1" />
-            선택
+            <input id="enemySelect3" type="checkbox" class="mr-1" /> 선택
           </label>
         </div>
         <div class="flex items-center gap-2 whitespace-nowrap overflow-x-auto">
           <input id="enemyId4" type="text" class="border rounded px-2 py-1 w-24" placeholder="아이디" />
           <input id="enemyMarch4" type="text" class="border rounded px-2 py-1 w-36" placeholder="HH:mm:ss" />
           <label class="inline-flex items-center w-20">
-            <input id="enemySelect4" type="checkbox" class="mr-1" />
-            선택
+            <input id="enemySelect4" type="checkbox" class="mr-1" /> 선택
           </label>
         </div>
       </div>
     </div>
   </section>
-  <script src="script.js"> 
+
+  <!-- ✅ 자바스크립트 -->
+  <script src="script.js"></script>
+
+  <!-- ✅ PWA 서비스 워커 등록 -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('service-worker.js')
+          .then(registration => {
+            console.log('ServiceWorker 등록 성공:', registration.scope);
+          })
+          .catch(error => {
+            console.log('ServiceWorker 등록 실패:', error);
+          });
+      });
+    }
   </script>
 </body>
 </html>
